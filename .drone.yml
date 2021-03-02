@@ -1,0 +1,16 @@
+kind: pipeline
+type: kubernetes
+name: default
+
+steps:
+  - name: test
+    image: openpolicyagent/opa:0.26.0
+    command:
+      - test
+      - -v
+      - .
+
+trigger:
+  event:
+    exclude:
+      - pull_request
